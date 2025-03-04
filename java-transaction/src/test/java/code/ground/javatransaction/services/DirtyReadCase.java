@@ -13,11 +13,9 @@ import org.springframework.transaction.support.TransactionTemplate;
 import java.math.BigDecimal;
 import java.util.concurrent.CountDownLatch;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 @Slf4j
 @SpringBootTest
-class AccountServiceTest {
+class DirtyReadCase {
     @Autowired
     private AccountService accountService;
 
