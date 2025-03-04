@@ -1,0 +1,16 @@
+server:
+  port: 8080
+spring:
+  application:
+    name:java-transaction
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/maindb?serverTimezone=Asia/Seoul&useUnicode=true&characterEncoding=utf8
+    username: user
+    password: password
+  jpa:
+    database: mysql
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+    show-sql: true
