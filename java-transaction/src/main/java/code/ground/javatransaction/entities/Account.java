@@ -20,5 +20,10 @@ public class Account {
     private Long id;
 
     private BigDecimal balance;
+
+    @Override
+    public String toString() {
+        return "Account(id=" + this.getId() + ", balance=" + this.getBalance() + ")";
+    }
 }
 

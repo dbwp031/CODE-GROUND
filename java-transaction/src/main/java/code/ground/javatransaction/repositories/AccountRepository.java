@@ -9,4 +9,6 @@ import java.util.List;
 public interface AccountRepository extends JpaRepository<Account, Long> {
     // Phantom read 테스트를 위한 범위 조회 메소드
     List<Account> findByBalanceGreaterThanEqual(BigDecimal balance);
+
+    List<Account> findAccountByBalanceBetween(BigDecimal min, BigDecimal max);
 }
