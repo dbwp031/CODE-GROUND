@@ -1,1 +1,17 @@
-spring.application.name=java-authentication
+server:
+  port: 8888
+
+spring:
+  application:
+    name: java-authentication
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3308/maindb?serverTimezone=Asia/Seoul&useUnicode=true&characterEncoding=utf8
+    username: root
+    password: root1234!
+  jpa:
+    database: mysql
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+    show-sql: true
