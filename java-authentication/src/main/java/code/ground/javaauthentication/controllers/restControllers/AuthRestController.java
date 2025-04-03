@@ -3,10 +3,12 @@ package code.ground.javaauthentication.controllers.restControllers;
 import code.ground.javaauthentication.models.dtos.JwtResponseDto;
 import code.ground.javaauthentication.models.vos.LoginRequestVo;
 import code.ground.javaauthentication.models.vos.SignupRequestVo;
+import code.ground.javaauthentication.models.vos.TokenRefreshRequestVo;
 import code.ground.javaauthentication.services.MemberService;
 import code.ground.javaauthentication.utils.JwtProvider;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -44,5 +46,18 @@ public class AuthRestController {
         memberService.updateTokens(vo.getEmail(), accessToken, refreshToken);
 
         return ResponseEntity.ok(new JwtResponseDto(accessToken, refreshToken));
+    }
+
+    @PostMapping("/refresh-token")
+    public ResponseEntity<?> refreshAccessToken(@RequestBody TokenRefreshRequestVo vo) {
+        String refreshToken = vo.getRefreshToken();
+        if (jwtProvider.validateToken(refreshToken)) {
+            Authentication authentication = jwtProvider.getAuthentication(refreshToken);
+            String newAccessToken = jwtProvider.createAccessToken(authentication);
+
+            return ResponseEntity.ok(new JwtResponseDto(newAccessToken, refreshToken));
+        } else {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Refresh Token 만료");
+        }
     }
 }

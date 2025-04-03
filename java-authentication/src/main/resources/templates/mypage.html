@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>내 정보 페이지</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+<h2>내 정보</h2>
+<div>
+    <p><strong>Email:</strong> <span id="email" th:text="${member.email}"></span></p>
+    <p><strong>User password:</strong> <span id="userId" th:text="${member.password}"></span></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="/js/auth.js"></script> <!-- 위에서 작성한 auth.js -->
+</body>
+</html>

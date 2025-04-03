@@ -39,6 +39,7 @@ public class SecurityConfig {
                         "/assets/**", "/css/**", "/forms/**", "/js/**", "/icons/**", "/favicon.ico",
                         "/oauth2/**",
                         "/api/auth/**",
+                        "/home", "/login", "/signup", "/error", "/logout",
                         "/api/**",  //TODO: 개발 후 제거 필요
                         "/", "/health").permitAll()
                 .anyRequest().authenticated());
